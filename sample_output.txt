@@ -1031,6 +1031,11 @@ Removed 1 transactions from mempool.
 ('tx_1770127904_5500', 0) {'amount': 10, 'owner': 'Bob'}
 ('COINBASE', 0) {'amount': 0.001, 'owner': 'Miner1'}
 
+Because in our design, only confirmed (mined) UTXOs are considered valid, and TX1 is still in the mempool, so Bob’s output does not exist in the UTXO set yet.
+
+So Bob’s transaction is rejected to prevent spending unconfirmed coins, which avoids double-spend and chain reorganization issues.
+
+-------
 
 1. Basic Transaction
 2. Multiple Inputs
@@ -1048,4 +1053,5 @@ Removed 1 transactions from mempool.
 Choose test: 0
 
 1.Create TX  2.View UTXO  3.View Mempool  4.Mine  5.Run Tests  6.Exit  7.Check Balance
+
 > 6
